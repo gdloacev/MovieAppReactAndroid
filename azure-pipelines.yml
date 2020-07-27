@@ -22,6 +22,7 @@ steps:
 - task: ReactNativePrepare@0
   inputs:
     platform: 'android'
+    cwd: '$(Build.ArtifactStagingDirectory)/android'
 
 - task: Gradle@2
   inputs:
