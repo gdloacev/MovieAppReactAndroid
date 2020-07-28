@@ -30,8 +30,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
 
-- task: DownloadPipelineArtifact@2
+- task: PublishBuildArtifacts@1
   inputs:
-    buildType: 'current'
-    itemPattern: '**/*.apk'
-    targetPath: '$(Pipeline.Workspace)'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
