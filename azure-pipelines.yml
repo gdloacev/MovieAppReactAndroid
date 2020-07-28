@@ -19,4 +19,13 @@ steps:
     npm install
   displayName: 'npm install'
 
-
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: '$(system.defaultWorkingDirectory)/android/gradlew'
+    workingDirectory: '$(system.defaultWorkingDirectory)/android'
+    options: '-Xmx3072m'
+    tasks: 'assembleRelease'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
