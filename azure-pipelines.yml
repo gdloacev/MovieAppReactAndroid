@@ -23,9 +23,8 @@ steps:
   inputs:
     gradleWrapperFile: '$(system.defaultWorkingDirectory)/android/gradlew'
     workingDirectory: '$(system.defaultWorkingDirectory)/android'
-    options: '''-Xmx3072m'''
+    options: '-Xmx3072m'
     tasks: 'assembleRelease'
     publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
