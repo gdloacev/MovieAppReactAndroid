@@ -30,6 +30,14 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
 
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultWorkingDirectory)/android'
+    Contents: '**/*.apk'
+    TargetFolder: '$(build.artifactStagingDirectory)'
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+
