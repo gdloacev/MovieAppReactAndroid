@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS-10.14'
 
 steps:
 - task: NodeTool@0
@@ -23,7 +23,9 @@ steps:
   inputs:
     gradleWrapperFile: '$(system.defaultWorkingDirectory)/android/gradlew'
     workingDirectory: '$(system.defaultWorkingDirectory)/android'
-    tasks: 'build'
+    tasks: 'assembleDebug'
+    gradleOptions: '-Xmx3072m'
+    testResultsFiles: '**/TEST-*.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
