@@ -20,6 +20,7 @@ steps:
   displayName: 'npm install'
 
 - task: Gradle@2
+  displayName: 'Build Android'
   inputs:
     gradleWrapperFile: '$(system.defaultWorkingDirectory)/android/gradlew'
     workingDirectory: '$(system.defaultWorkingDirectory)/android'
@@ -29,4 +30,11 @@ steps:
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
+
+- task: CopyFiles@2
+  displayName: 'Copy APK'
+  inputs:
+    SourceFolder: '$(system.defaultWorkingDirectory)/android'
+    Contents: '**/*.apk'
+    TargetFolder: '$(build.artifactStagingDirectory)'
 
